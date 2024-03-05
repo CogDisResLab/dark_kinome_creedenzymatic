@@ -5,7 +5,7 @@ library(creedenzymatic)
 
 process_creedenzymatic <-
   function(krsa_path, uka_path, peptide_path) {
-    krsa_data <- read_csv(krsa_path, show_col_types = FALSE) |>
+    krsa_data <- read_tsv(krsa_path, show_col_types = FALSE) |>
       select(Kinase, Score = AvgZ) |>
       read_krsa(trns = "abs", sort = "desc")
 
@@ -14,7 +14,7 @@ process_creedenzymatic <-
       read_uka(trns = "abs", sort = "desc")
 
     peptide_data <-
-      read_csv(peptide_path, show_col_types = FALSE) |>
+      read_tsv(peptide_path, show_col_types = FALSE) |>
       select(Peptide, Score = totalMeanLFC)
 
     kea3_data <-
@@ -26,35 +26,32 @@ process_creedenzymatic <-
         lib = "kinase-substrate"
       )
 
-    ptmsea_data <-
-      read_ptmsea(peptide_data)
+    # ptmsea_data <-
+    #   read_ptmsea(peptide_data)
 
     combined <- combine_tools(
       KRSA_df = krsa_data,
       UKA_df = uka_data,
-      KEA3_df = kea3_data,
-      PTM_SEA_df = ptmsea_data
+      KEA3_df = kea3_data
+      # PTM_SEA_df = ptmsea_data
     )
 
     combined
   }
 
 krsa_files <- c(
-  "results/warfel-krsa_table_full_1_HR_NORMOXIA_STK.csv",
-  "results/warfel-krsa_table_full_4_HR_NORMOXIA_STK.csv",
-  "results/warfel-krsa_table_full_16_HR_NORMOXIA_STK.csv"
+  "results/acrossChip_KRSA_Table_females.txt",
+  "results/acrossChip_KRSA_Table_males.txt"
 )
 
 uka_files <- c(
-  "kinome_data/UKA/NORM-1HR/Summaryresults 20230616-1528.txt",
-  "kinome_data/UKA/NORM-4HR/Summaryresults 20230616-1529.txt",
-  "kinome_data/UKA/NORM-16HR/Summaryresults 20230616-1530.txt"
+  "results/UKA_Femalestxt.txt",
+  "results/UKA_Males.txt"
 )
 
 peptide_files <- c(
-  "results/warfel-dpp_1_HR_NORMOXIA-STK.csv",
-  "results/warfel-dpp_4_HR_NORMOXIA-STK.csv",
-  "results/warfel-dpp_16_HR_NORMOXIA-STK.csv"
+  "results/females_LFC_df.txt",
+  "results/males_LFC_df.txt"
 )
 
 result <-
@@ -64,5 +61,5 @@ result <-
     peptide_path = peptide_files
   ) |>
   pmap(process_creedenzymatic) |>
-  set_names(c("NORM-1HR", "NORM-4HR", "NORM-16HR")) |>
+  set_names(c("Females", "Males")) |>
   imap_dfr(~ write_csv(.x, str_glue("results/{.y}_creedenzymatic.csv")), .id = "Comparison")

@@ -1,6 +1,6 @@
 {
   "R": {
-    "Version": "4.3.2",
+    "Version": "4.3.3",
     "Repositories": [
       {
         "Name": "CRAN",
@@ -462,8 +462,8 @@
       "RemoteHost": "api.github.com",
       "RemoteUsername": "CogDisResLab",
       "RemoteRepo": "creedenzymatic",
-      "RemoteRef": "v5.0.0",
-      "RemoteSha": "108de4e68130e331658e50c4bc1aed798b7c4368",
+      "RemoteRef": "next",
+      "RemoteSha": "4c1eb2ecda7bb0aec21f363933bf876d5321210e",
       "Requirements": [
         "R",
         "dplyr",
@@ -481,7 +481,7 @@
         "utils",
         "verification"
       ],
-      "Hash": "610cf8eea3ad1123a77807634a9c5d47"
+      "Hash": "aa1e86e5f0077ce569180a7cde9fbe7c"
     },
     "curl": {
       "Package": "curl",
@@ -902,7 +902,7 @@
     },
     "ggplot2": {
       "Package": "ggplot2",
-      "Version": "3.4.4",
+      "Version": "3.5.0",
       "Source": "Repository",
       "Repository": "CRAN",
       "Requirements": [
@@ -923,7 +923,7 @@
         "vctrs",
         "withr"
       ],
-      "Hash": "313d31eff2274ecf4c1d3581db7241f9"
+      "Hash": "52ef83f93f74833007f193b2d4c159a2"
     },
     "ggsignif": {
       "Package": "ggsignif",

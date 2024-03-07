@@ -55,7 +55,8 @@ generate_quartile_plot <- function(datafile) {
     readr::read_csv(file.path("results", datafile), show_col_types = FALSE)
 
   sig_kinases <- creeden_data |>
-    extract_top_kinases(min_qrt = 4, min_counts = 2)
+    extract_top_kinases(min_qrt = 4, min_counts = 2) |>
+    c("AATK", "LTK", "INSRR", "TNK1", "EPHA6")
 
   creeden_data |>
     dplyr::filter(hgnc_symbol %in% sig_kinases) |>

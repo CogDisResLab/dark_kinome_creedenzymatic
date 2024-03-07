@@ -456,14 +456,14 @@
     },
     "creedenzymatic": {
       "Package": "creedenzymatic",
-      "Version": "5.0.0",
+      "Version": "6.0.0",
       "Source": "GitHub",
       "RemoteType": "github",
       "RemoteHost": "api.github.com",
       "RemoteUsername": "CogDisResLab",
       "RemoteRepo": "creedenzymatic",
       "RemoteRef": "next",
-      "RemoteSha": "4c1eb2ecda7bb0aec21f363933bf876d5321210e",
+      "RemoteSha": "2d238430b088aa9ee8eb45a0fad0b0b71551913b",
       "Requirements": [
         "R",
         "dplyr",
@@ -481,7 +481,7 @@
         "utils",
         "verification"
       ],
-      "Hash": "aa1e86e5f0077ce569180a7cde9fbe7c"
+      "Hash": "73d3cc414709e527f8b7851f6cd0d788"
     },
     "curl": {
       "Package": "curl",
